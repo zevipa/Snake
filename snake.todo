@@ -1,0 +1,28 @@
+Snake game:
+ ✔ Add keyboard controls @done (03-16-13 11:50)
+ ✔ create the snake @done (13-03-17 12:22)
+ ✔ implement the snake @done (13-03-17 12:22)
+ ✔ draw the snake @done (13-03-17 12:52)
+ ✔ move the snake @done (13-03-17 13:20)
+ ✔ prevent snake from moving the opposite direction it's moving @done (13-03-17 13:32)
+ ✔ add toggleable wall collisions @done (13-03-17 15:26)
+ ✔ add collision with snake body @done (13-03-17 23:20)
+ ✔ implement start screen @done (13-03-17 18:23)
+ ✔ add game over screen @done (03-19-13 11:01)
+ ✔ add mouse control for the start screen @done (13-03-17 16:35)
+ ✘ create buttons that have text and change color when they are being hovered over and being clicked on @cancelled (03-21-13 10:31)
+ these will replace the start and exit text
+ ✔ move from dict to Rect() @done (13-03-17 20:18)
+ The rect method is far more robust IMO, and it includes collision testing :D
+ ✔ implement score counter @done (03-18-13 05:48)
+ ✔ add food (cherries) @done (03-19-13 11:01)
+ ✔ instead of exiting when the snake dies, restart the game @done (03-19-13 11:01)
+ ☐ consider implementing better food system
+ with animated food items, and different types of food (blueberries, etc.).
+ list of food items, draw them and give them positions and such
+ ☐ consider adding config system for all the options such as a config file, having the configurable variables up at the top, using a tkinter gui, or a custom pygame gui :O
+ --- ✄ -----------------------
+ notes:
+
+bugs:
+when going downwards, pressing the left and up arrow keys very quickly at the same time will kill the snake
