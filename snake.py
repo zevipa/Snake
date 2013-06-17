@@ -27,24 +27,22 @@ class Game:
         self.clock = pygame.time.Clock()
         self.WIN_WIDTH = 640
         self.WIN_HEIGHT = 480
-        print(pygame.display.Info())
         self.screen = pygame.display.set_mode((self.WIN_WIDTH, self.WIN_HEIGHT))
         self.running = True
         self.pausing = False
-
-        print(pygame.display.list_modes())
 
         # set our title
         pygame.display.set_caption("Snake!")
 
         # if the game is fullscreen or not
         self.is_fullscreen = False
+        pygame.key.set_repeat(1, 2)
 
         # the current direction of the snake
         self.direction = RIGHT
 
         # whether or not we have wall collisions
-        self.walls = True
+        self.walls = False
         # whether or not the snake wraps around the walls
         self.wrap_walls = True
         # whether or not we should write the score to highscores.txt
@@ -92,9 +90,6 @@ class Game:
                 self.check_if_eating_food()
 
                 self.check_for_wall()
-
-                print(self.direction)
-                print(self.snake_is_dead)
 
                 # if the snake has just been killed, initialize the
                 # end screen resources before the if statement is no
@@ -267,8 +262,7 @@ class Game:
         for i in range(0, len(self.snake)-1):
             # if the head overlaps any part of the snake's body (besides the head) it dies.
             if self.snake[-1].colliderect(self.snake[i]):
-                if self.snake[-1] != self.snake[-2]:
-                    self.kill_snake()
+                self.kill_snake()
 
     def create_food(self):
         self.food_item = pygame.Rect(random.randrange(0, self.WIN_WIDTH - self.SNAKE_SEGMENT_WIDTH, self.SNAKE_SEGMENT_WIDTH), random.randrange(0, self.WIN_HEIGHT - self.SNAKE_SEGMENT_WIDTH, self.SNAKE_SEGMENT_WIDTH), self.FOOD_WIDTH - 1, self.FOOD_WIDTH - 1)
@@ -298,6 +292,7 @@ class Game:
         print("restarting the game!")
         self.end_screen_is_showing = False
         self.snake_is_dead = False
+        self.SNAKE_SEGMENT_WIDTH = 16  # reset the snake's size
 
         self.create_snake()
         self.score_counter = ScoreCounter()
