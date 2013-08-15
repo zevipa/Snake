@@ -42,7 +42,7 @@ class Game:
         self.direction = RIGHT
 
         # whether or not we have wall collisions
-        self.walls = False
+        self.walls = True
         # whether or not the snake wraps around the walls
         self.wrap_walls = True
         # whether or not we should write the score to highscores.txt
@@ -85,6 +85,10 @@ class Game:
                 self.draw_snake()
                 self.draw_food()
                 self.draw_scoreboard()
+
+                if self.pausing:
+                    # display the pause screen
+                    self.draw_pause_screen()
 
                 self.check_for_head_colliding_with_body()
                 self.check_if_eating_food()
@@ -323,6 +327,9 @@ class Game:
         self.screen.blit(self.end_score_option_text, self.end_score_option_text_pos)
         self.screen.blit(self.end_score_option_text2, self.end_score_option_text2_pos)
 
+    def draw_pause_screen(self):
+        pass
+
 
 class ScoreCounter:
     """The ScoreCounter will keep track of the points the snakes receives from eating food"""
@@ -344,7 +351,6 @@ class ScoreCounter:
 
     def write_points_to_file(self):
         """Write the user's points to the highscores.txt file"""
-        print('debug')
         highscores = open("highscores.txt", "a+")
         highscores.write(str(self.points) + "\n")
         highscores.close()
